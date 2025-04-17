@@ -26,7 +26,7 @@ export default function PostDetailPage() {
   useEffect(() => {
     if (!id) return;
 
-    fetch(`http://localhost:3000/articles/${id}`)
+    fetch(`https://fs-next-js-pandamarket.onrender.com/articles/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setPost(data);
@@ -40,7 +40,7 @@ export default function PostDetailPage() {
   useEffect(() => {
     if (!id) return;
 
-    fetch(`http://localhost:3000/articles/${id}/comments`)
+    fetch(`https://fs-next-js-pandamarket.onrender.com/articles/${id}/comments`)
       .then((res) => res.json())
       .then((data) =>
         setComments(
@@ -60,7 +60,7 @@ export default function PostDetailPage() {
     if (!newComment.trim()) return;
 
     try {
-      const res = await fetch(`http://localhost:3000/articles/${id}/comments`, {
+      const res = await fetch(`https://fs-next-js-pandamarket.onrender.com/articles/${id}/comments`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ content: newComment }),
@@ -86,7 +86,7 @@ export default function PostDetailPage() {
 
   const handleEditSubmit = async (commentId, editContent) => {
     try {
-      await fetch(`http://localhost:3000/comments/${commentId}`, {
+      await fetch(`https://fs-next-js-pandamarket.onrender.com/comments/${commentId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ content: editContent }),
@@ -107,7 +107,7 @@ export default function PostDetailPage() {
   const handleDelete = async (commentId) => {
     if (!confirm("댓글을 삭제할까요?")) return;
     try {
-      await fetch(`http://localhost:3000/comments/${commentId}`, {
+      await fetch(`https://fs-next-js-pandamarket.onrender.com/comments/${commentId}`, {
         method: "DELETE",
       });
 
@@ -119,7 +119,7 @@ export default function PostDetailPage() {
 
   const handlePostUpdate = async () => {
     try {
-      await fetch(`http://localhost:3000/articles/${id}`, {
+      await fetch(`https://fs-next-js-pandamarket.onrender.com/articles/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title: editTitle, content: editContent }),
@@ -140,7 +140,7 @@ export default function PostDetailPage() {
   const handlePostDelete = async () => {
     if (!confirm("정말 삭제하시겠습니까?")) return;
     try {
-      await fetch(`http://localhost:3000/articles/${id}`, {
+      await fetch(`https://fs-next-js-pandamarket.onrender.com/articles/${id}`, {
         method: "DELETE",
       });
       router.push("/board");
